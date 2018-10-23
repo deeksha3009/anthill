@@ -7,7 +7,7 @@ from django.db.models import Q
 
 def home(request):
 	if request.user.is_authenticated:
-		return redirect("/dashboard")
+		# return redirect("/dashboard")
 	return render(request,"home.html")
 
 def signin(request):
