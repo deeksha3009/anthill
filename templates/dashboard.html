@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% for group in groups %}
+	<div class="card" style="width: 18rem;">
+		<div class="card-body">
+			<h5 class="card-title">{{group.group_name}}</h5>
+			<p class="card-text">{{group.description}}</p>
+			<a href="/group/{{group.id}}/" class="btn btn-primary">See Group</a>
+		</div>
+	</div>
+{% endfor %}
+<br>
+<br>
+<button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Create Group</button>
+<div class="collapse" id="collapseExample">
+	<div class="card card-body">
+		<form action="/create_group/" method="POST">
+			{% csrf_token %}
+			<div class="form-group">
+				<input type="text" name="group name" placeholder=" enter your group name"><br><br>
+				<textarea type="text" cols=50 rows=3 name="description" placeholder="  description about your group"></textarea> <br><br>
+				<input type="number" id="myNumber" name="guide/s" placeholder="guides" min="1" max="5"><br><br>
+				<input type="number" id="myNumber" name="member/s" placeholder="members" min="1" max="20"><br><br>
+				<input type="email" name="email" placeholder="enter mail-id"><br><br>
+				<button type="submit" class="btn btn-md btn-secondary">Create a Group</button>
+			</div>
+		</form>
+	</div> 
+</div>
+{# <a href="/create_group/"><button class="btn btn-md btn-secondary"></button></a> #}
+{% endblock %}

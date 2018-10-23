@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% block body %}
+	<div class="container">
+		<div class="row align-items-start">
+			<div class="col-md-4">
+				<h1>{{group.group_name}}</h1>
+				<div>
+					<h3>Members</h3>
+					{% for member in members %}
+						<p>{{member}}</p>
+					{% endfor %}
+					<button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#members" aria-expanded="false" aria-controls="collapseExample">Add to Group</button>
+					<div class="collapse" id="members">
+						<div class="card card-body">
+							<form action="/add_member/{{group.id}}/" method="POST">
+								{% csrf_token %}
+								<select name="user" required>
+									{% for user in users %}
+										<option value="{{user.id}}">{{user}}</option>
+									{% endfor %}
+								</select>
+								<button type="submit" class="btn btn-md btn-secondary">Add</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div>
+					<h3>Guides</h3>
+					<div class="content">
+						{% for guide in guides %}
+							<p>{{guide}}</p>
+						{% endfor %}
+							<button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#guide" aria-expanded="false" aria-controls="collapseExample">Add to Group</button>
+							<div class="collapse" id="guide">
+								<div class="card card-body">
+									<form action="/add_guide/{{group.id}}/" method="POST">
+										{% csrf_token %}
+										<select name="user" required>
+											{% for user in users %}
+												<option value="{{user.id}}">{{user}}</option>
+											{% endfor %}
+										</select>
+										<button type="submit" class="btn btn-md btn-secondary">Add</button>
+									</form>
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h3>Milestones</h3>
+				{# <a class="btn btn-md btn-danger" href="/miles/{{group.id}}/">Add Milestone</a> #}
+				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Milestone">Add Milestone</button>
+				<div>
+					{% for c in milestones %}
+						<div class="card" style="width: 18rem;">
+							<div class="card-body">
+								<h5 class="card-title">{{c.title}}</h5>
+								<p>{{c.user}}</p>
+								<p class="card-text">{{c.content|truncatechars:20}}</p>
+    							<a href="/milestone/{{c.id}}/" class="btn btn-primary">read more</a>
+    							<hr>
+    							<h3>Goals</h3>
+								{% for goal in goals %}
+									<p>{{goal.title}}</p>
+								{% endfor %}
+								{# <a href="/submit_goals/{{milestones.id}}/"><button class="btn btn-md btn-info">add goals</button></a> #}
+							</div>
+						</div>
+					{% endfor %}
+					
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h3>Updates</h3>
+				<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updates">Make an Update</button>
+				<div class="upd">
+					{% for update in updates %}
+						<div class="card" style="width: 18rem;">
+							<div class="card-body">
+								<h5 class="card-title">{{update.title}}</h5>
+								<hr>
+								<p>{{update.user}}</p>
+								<p>{{update.text}}</p>
+							</div>
+						</div>
+					{% endfor %}
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	{# Milestone modal #}
+	<div class="modal" id="Milestone" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Add Milestone</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					
+					<form action="/miles/{{group.id}}/" method="POST">
+						{% csrf_token %}
+						<div class="form-group">
+							<input class="form-control" type="checkbox" type="checkbox" name="title" placeholder="Title">
+						</div>
+						<div class="form-group">
+							<input class="form-control" type="text" name="due_date" placeholder="last date">
+						</div>
+						<div class="form-group">
+							<textarea class="form-control"  type="content" name="content" placeholder="Update"></textarea>
+						</div>
+						<button type="submit" class="btn btn-md btn-info">add</button>
+					</form>
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	{# Updates modal #}
+<div class="modal" tabindex="-1" id="updates" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form action="/upt/{{group.id}}/" method="POST">
+					{% csrf_token %}
+					<div class="form-group">
+						<input class="form-control" type="text" name="title" placeholder="Title">
+					</div>
+					<div class="form-group">
+						<textarea class="form-control"  type="text" name="update" placeholder="Update"></textarea>
+					</div>
+					<button type="submit" class="btn btn-md btn-success">Update</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
