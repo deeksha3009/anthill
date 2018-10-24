@@ -100,36 +100,36 @@
 		</div>
 	</div>
 	{# Milestone modal #}
-	<div class="modal" id="Milestone" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Add Milestone</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					
-					<form action="/miles/{{group.id}}/" method="POST">
-						{% csrf_token %}
-						<div class="form-group">
-							<input class="form-control" type="checkbox" type="checkbox" name="title" placeholder="Title">
-						</div>
-						<div class="form-group">
-							<input class="form-control" type="text" name="due_date" placeholder="last date">
-						</div>
-						<div class="form-group">
-							<textarea class="form-control"  type="content" name="content" placeholder="Update"></textarea>
-						</div>
-						<button type="submit" class="btn btn-md btn-info">add</button>
-					</form>
-					
-				</div>
+<div class="modal" id="Milestone" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Add Milestone</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				
+				<form action="/miles/{{group.id}}/" method="POST">
+					{% csrf_token %}
+					<div class="form-group">
+						<input class="form-control" type="text" type="checkbox" name="title" placeholder="Title">
+					</div>
+					<div class="form-group">
+						<input class="form-control" type="date" name="due_date" placeholder="last date">
+					</div>
+					<div class="form-group">
+						<textarea class="form-control"  type="content" name="content" placeholder="Update"></textarea>
+					</div>
+					<button type="submit" class="btn btn-md btn-info">add</button>
+				</form>
 				
 			</div>
+			
 		</div>
 	</div>
+</div>
 	{# Updates modal #}
 <div class="modal" tabindex="-1" id="updates" role="dialog">
 	<div class="modal-dialog" role="document">

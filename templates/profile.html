@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<fieldset>
+	<h6 class="section_title">Personal information</h6>
+	<dl id="personal_info">
+		<dt class="top">Name</dt>
+		<dd class="ajax_edit_cell">
+			<span class="data">{{user.username}}</span> 
+			<a class="inline_edit_link" href="#">Edit</a>
+		</dd>
+	</dl>
+	<div id="login_info">
+		<dl>
+			<dt>Email</dt>
+			<dd class="ajax_edit_cell"><span class="data">{{user.email}}</span>
+			</dd>
+		</dl>
+	</div>
+	<div id="update_info">
+		<dl>
+			<dt>Updates</dt>
+			<dd class="ajax_edit_cell"><span class="data">{{user.updates}}</span>
+			</dd>
+		</dl>
+	</div>
+</fieldset>
+
+{% endblock %}
+{% endfor %}

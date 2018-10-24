@@ -1,42 +1,43 @@
 {% extends 'base.html' %}
-
 {% block body %}
-{% for group in groups %}
-	<div class="card" style="width: 18rem;">
-		<div class="card-body">
-			<h5 class="card-title">{{group.group_name}}</h5>
-			<p class="card-text">{{group.description}}</p>
-			<a href="/group/{{group.id}}/" class="btn btn-primary">See Group</a>
-		</div>
-	</div>
-{% endfor %}
-<br>
-<br>
-{% for g in group %}
-	<div class="card" style="width: 18rem;">
-		<div class="card-body">
-			<h5 class="card-title">{{group.group_name}}</h5>
-			<p class="card-text">{{group.no_of_members}}</p>
-			<p class="card-text">{{group.no_of_guides}}</p>
-			<a href="/group/{{group.id}}/" class="btn btn-primary">See Group</a>
-		</div>
-	</div>
-{% endfor %}
-<button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Create Group</button>
-<div class="collapse" id="collapseExample">
-	<div class="card card-body">
-		<form action="/create_group/" method="POST">
-			{% csrf_token %}
-			<div class="form-group">
-				<input type="text" name="group name" placeholder=" enter your group name"><br><br>
-				<textarea type="text" cols=50 rows=3 name="description" placeholder="  description about your group"></textarea> <br><br>
-				<input type="number" id="myNumber" name="guide/s" placeholder="guides" min="1" max="5"><br><br>
-				<input type="number" id="myNumber" name="member/s" placeholder="members" min="1" max="20"><br><br>
-				<input type="email" name="email" placeholder="enter mail-id"><br><br>
-				<button type="submit" class="btn btn-md btn-secondary">Create a Group</button>
+<div class="container">
+<div class="row align-items-start">
+	<div class="col-md-4">
+		{% for group in groups %}
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">{{group.group_name}}</h5>
+					<p class="card-text">{{group.description}}</p>
+					<a href="/group/{{group.id}}/" class="btn btn-primary">See Group</a>
+				</div>
 			</div>
-		</form>
-	</div> 
+		{% endfor %}
+	</div>
+	<div class="col-md-4">
+		<div class="card" id="list" style="width: 23rem;">
+			<div class="card-body">
+				<h5 class="card-title">form a group</h5>
+				<p>Add all members and a guide to help you</p>
+				<button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#group" aria-expanded="false" aria-controls="collapseExample">Create Group</button>
+				<div class="collapse" id="group">
+					<div class="card card-body">
+						<form action="/create_group/" method="POST">
+							{% csrf_token %}
+							<div class="form-group">
+								<input type="text" name="group name" placeholder=" enter your group name"><br><br>
+								<textarea type="text" cols=40 rows=3 name="description" placeholder="  description about your group"></textarea><br><br>
+								<input type="number" id="myNumber" name="guide/s" placeholder="guides" min="1" max="5"><br><br>
+								<input type="number" id="myNumber" name="member/s" placeholder="members" min="1" max="20"><br><br>
+								<button type="submit" class="btn btn-md btn-dark">Create a Group</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+	</div>
 </div>
 {# <a href="/create_group/"><button class="btn btn-md btn-secondary"></button></a> #}
 {% endblock %}

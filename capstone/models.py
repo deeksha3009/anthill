@@ -22,7 +22,6 @@ class Group(models.Model):
 	no_of_guides = models.IntegerField(null=True)
 	members = ArrayField(models.IntegerField(null=True),blank=True,default=list)
 	guide = ArrayField(models.IntegerField(null=True),blank=True,default=list)
-	invites = models.CharField(max_length=200,null=True)
 	admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
 	def __str__(self):

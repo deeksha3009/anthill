@@ -8,6 +8,7 @@ from django.db.models import Q
 def home(request):
 	if request.user.is_authenticated:
 		return redirect("/dashboard")
+
 	return render(request,"home.html")
 
 def signin(request):
@@ -36,7 +37,8 @@ def signup(request):
 		user = authenticate(username=username, password=password)
 		if user is None:
 			user = User.objects.create_user(username, email, password)
-			return redirect("/dashboard")
+			login(request,user)
+			return redirect("/dashboard/")
 		else:
 			return HttpResponse("Please Check the Info, User might already exist.")
 	return render(request, "signup.html")
@@ -49,9 +51,9 @@ def signout(request):
 
 def dashboard(request):
 	groups = Group.objects.filter(Q(members__contains=[request.user.id]) | 
-		Q(guide__contains=[request.user.id]))
-	group = Group.objects.filter(Q(members__in=[no_of_members]) | Q(guides__in=[no_of_guides]))
-	return render(request, "dashboard.html", {"group":group}, {'groups':groups})
+		Q(guide__contains=[request.user.id]) | Q(admin=request.user))
+	print(groups)
+	return render(request, "dashboard.html", {"groups":groups} )
 
 def create_group(request):
 	user=request.user
@@ -60,10 +62,10 @@ def create_group(request):
 		text=request.POST.get('description')
 		no_of_guides=request.POST.get('guide/s')
 		no_of_members=request.POST.get('member/s')
-		invite=request.POST.get('email')
-		group=Group(group_name=name,description=text, no_of_members=no_of_members, no_of_guides=no_of_guides, invites=invite, admin=user)
-		group.save()
-		return redirect("/dashboard")
+		group=Group.objects.create(group_name=name,description=text, 
+			no_of_members=no_of_members, 
+			no_of_guides=no_of_guides, admin=user)
+		return redirect("/dashboard/")
 	return render(request,'dashboard.html')
 	
 
@@ -82,17 +84,14 @@ def group_page(request,gid):
 		"goals":goals,
 		"users":users})
 
+
 def add_members(request,gid):
 	user=request.user
-	# group = Group.objects.get(pk=gid)
 	group = Group.objects.get(pk=gid)
 	if request.method == "POST":
 		userid = request.POST.get('user')
 		group.members.append(int(userid))
-		if group.members(userid).exists():
-			return HttpResponse("user already exists")
-		else:
-			group.save()
+		group.save()
 		return redirect(f"/group/{group.id}/")
 
 	return render(request,"group_page.html", {"group":group})
@@ -102,12 +101,8 @@ def add_guides(request,gid):
 	group = Group.objects.get(pk=gid)
 	if request.method == "POST":
 		userid = request.POST.get('user')
-		if Group.objects.filter(userid).exists():
-			return HttpResponse("user already exists")
-		else:
-			group.guide.append(int(userid))
-			group.save()
-			
+		group.guide.append(int(userid))
+		group.save()	
 		return redirect(f"/group/{group.id}/")
 
 	return render(request,"group_page.html", {"group":group})
