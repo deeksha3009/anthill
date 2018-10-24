@@ -50,8 +50,7 @@ def signout(request):
 def dashboard(request):
 	groups = Group.objects.filter(Q(members__contains=[request.user.id]) | 
 		Q(guide__contains=[request.user.id]))
-	group = Group.objects.all()
-	print(groups)
+	group = Group.objects.filter(Q(members__in=[no_of_members]) | Q(guides__in=[no_of_guides]))
 	return render(request, "dashboard.html", {"group":group}, {'groups':groups})
 
 def create_group(request):
