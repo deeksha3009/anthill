@@ -10,7 +10,8 @@
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 			<div class="container">
-				<a class="navbar-brand" href="/">AntHill</a>
+				<a class="nav-item nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
+				<a class="navbar-brand" href="#">AntHill</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 				</button>
@@ -20,7 +21,7 @@
 							<a class="nav-item nav-link" href="/login/">Login</a>
 							<a class="nav-item nav-link" href="/signup/">Sign Up</a>
 						{% else %}
-							<a class="nav-item nav-link active" href="/dashboard/">Home<span class="sr-only">(current)</span></a> 
+
 							<a class="nav-item nav-link" href="/logout/">Logout</a>
 						{% endif %}
 						{% block nav %}

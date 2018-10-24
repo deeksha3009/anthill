@@ -12,6 +12,16 @@
 {% endfor %}
 <br>
 <br>
+{% for g in group %}
+	<div class="card" style="width: 18rem;">
+		<div class="card-body">
+			<h5 class="card-title">{{group.group_name}}</h5>
+			<p class="card-text">{{group.no_of_members}}</p>
+			<p class="card-text">{{group.no_of_guides}}</p>
+			<a href="/group/{{group.id}}/" class="btn btn-primary">See Group</a>
+		</div>
+	</div>
+{% endfor %}
 <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Create Group</button>
 <div class="collapse" id="collapseExample">
 	<div class="card card-body">
