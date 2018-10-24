@@ -1,13 +1,13 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
-from capstone.models import *
+from capstone.models import Group,Milestone,Update,Goal
 from django.db.models import Q
 
 
 def home(request):
 	if request.user.is_authenticated:
-		# return redirect("/dashboard")
+		return redirect("/dashboard")
 	return render(request,"home.html")
 
 def signin(request):
@@ -50,8 +50,9 @@ def signout(request):
 def dashboard(request):
 	groups = Group.objects.filter(Q(members__contains=[request.user.id]) | 
 		Q(guide__contains=[request.user.id]))
+	group = Group.objects.all()
 	print(groups)
-	return render(request, "dashboard.html", {'groups':groups})
+	return render(request, "dashboard.html", {"group":group}, {'groups':groups})
 
 def create_group(request):
 	user=request.user

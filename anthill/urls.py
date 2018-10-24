@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from capstone.views import *
+from capstone.views import home,signin,signup,signout,dashboard,create_group,group_page,add_members,add_guides,updates,add_milestone,view_milestones
 
 urlpatterns = [
     path('admin/', admin.site.urls),
