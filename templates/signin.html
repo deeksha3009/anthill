@@ -3,15 +3,25 @@
 {% block body %}
 <div class="container" id="login_form">
 	<div class="card-body">
-		<form action="/login/" class="form" method="POST">
-			{% csrf_token %}
-			<input type="text" name="username" placeholder="username">
-			<br>
-			<input type="password" name="password" placeholder="password">
-			<br>
-			<br>
-			<button type="submit" class="btn btn-secondary">login</button>
-		</form>
+		<div class="card">
+			<h5 class="card-header info-color white-text text-center py-4">
+			<strong>Sign in</strong>
+			</h5>
+			<div class="card-body px-lg-5 pt-0">
+				<form action="/login/" method="POST" class="text-center" style="color: #757575;">
+					{% csrf_token %}
+					<input type="text" name="username" placeholder="username">
+					<br><br>
+					<input type="password" name="password" placeholder="password">
+					<br>
+					<br>
+					<button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+				</form>
+				<p>Not a member?
+					<a href="/signup/">Register</a>
+				</p>
+			</div>
+		</div>
 	</div>
 </div>
 {% endblock %}

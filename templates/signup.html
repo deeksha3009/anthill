@@ -1,12 +1,22 @@
 {% extends "base.html" %}
 
 {% block body %}
-
-<form action="/signup/" method="POST">
-	{% csrf_token %}
-	<input type="text" name="username" placeholder="username"><br>
-	<input type="email" name="email" placeholder="Email required"><br>
-	<input type="password" name="password" placeholder="password"><br>
-	<input type="submit" name="create account">
-</form>
+<div class="container" id="signup_form">
+	<div class="card-body">
+		<div class="card">
+			<h5 class="card-header info-color white-text text-center py-4">
+			<strong>Sign in</strong>
+			</h5>
+			<div class="card-body px-lg-5 pt-0">
+				<form action="/signup/" method="POST" class="text-center" style="color: #757575;">
+					{% csrf_token %}
+					<input type="text" name="username" placeholder="username"><br><br>
+					<input type="email" name="email" placeholder="Email required"><br><br>
+					<input type="password" name="password" placeholder="password"><br><br>
+					<button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

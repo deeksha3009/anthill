@@ -1,14 +1,20 @@
-.home{
+#home{
 	background-color: #ff7f50;
 	font-style: oblique;
 }
 nav{
 	margin: 10px;
+	min-height: 80px;
 }
 #login_form{
 	border-style: solid;
 	width: 50%;
     border-width: 5px DodgerBlue;
+}
+#signup_form{
+	float:center;
+	border-style: solid;
+	width: 50%;
 }
 
 #group{
@@ -22,6 +28,3 @@ nav{
 	width: 50%;
 }
 
-#content{
-	float: bottom;
-}
