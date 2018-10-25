@@ -10,6 +10,7 @@ class Profile(models.Model):
 		("GUIDE",'guide'),
 	)
 	category=models.CharField(choices=choices,default="ADMIN",max_length=100)
+	picture = models.ImageField(default="default.jpg")
 
 
 	def __str__(self):

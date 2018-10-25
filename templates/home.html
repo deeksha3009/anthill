@@ -1,15 +1,19 @@
 {% extends "base.html" %}
+{% load static %}
 {% block nav %}
 {% endblock %}
 {% block body %}
 	<br>
 	<br>
-	<div class="jumbotron jumbotron-fluid" id="home">
+	<div class="jumbotron jumbotron-fluid" >
 		<div class="container">
-			<img class="card-img-left" src="logo.png" alt="Card image cap">
+			<img lass="card-img-left" src="{% static 'logo.png' %}" width="60%" height="60%">
 			<h1 class="display-4">Welcome to AntHill</h1>
 			<hr class="my-4">
-			<p class="lead">With today’s technology, connecting with people is simpler than ever. This app is all about putting the power of connection into the hands of every small group leader in your church. If you lead a small group, this one’s for you.</p>
+			<p class="card-body-right">With today’s technology, connecting with people is simpler than ever. This app is all about putting the power of connection into the hands of every small group leader in your church. If you lead a small group, this one’s for you.</p>
+			<p>wanna be a member?
+				<a href="/signup/">Register</a>
+			</p>
 		</div>
 	</div>
 {% endblock %}

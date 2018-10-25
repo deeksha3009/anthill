@@ -102,7 +102,7 @@ def add_guides(request,gid):
 	if request.method == "POST":
 		userid = request.POST.get('user')
 		group.guide.append(int(userid))
-		group.save()	
+		group.save()
 		return redirect(f"/group/{group.id}/")
 
 	return render(request,"group_page.html", {"group":group})
@@ -147,3 +147,7 @@ def view_milestones(request,mid):
 	print(milestone)
 	return render(request , "milestone.html", {"milestones":milestone})
 
+def profile(request):
+	user = request.user
+	update = Update.objects.filter(user=user)
+	return render(request,"profile.html" ,{"update":update})

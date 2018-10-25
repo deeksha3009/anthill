@@ -1,29 +1,33 @@
 {% extends 'base.html' %}
-{% block content %}
-<fieldset>
-	<h6 class="section_title">Personal information</h6>
-	<dl id="personal_info">
-		<dt class="top">Name</dt>
-		<dd class="ajax_edit_cell">
-			<span class="data">{{user.username}}</span> 
-			<a class="inline_edit_link" href="#">Edit</a>
-		</dd>
-	</dl>
-	<div id="login_info">
-		<dl>
-			<dt>Email</dt>
-			<dd class="ajax_edit_cell"><span class="data">{{user.email}}</span>
+{% load static %}
+{% block body %}
+<div class="profile" id="details">
+	<fieldset>
+		<h6 class="section_title">Personal information</h6>
+		<dl id="personal_info">
+			<dt class="top">Name</dt>
+			<dd class="ajax_edit_cell">
+				<span class="data">{{user.username}}</span> 
 			</dd>
 		</dl>
-	</div>
-	<div id="update_info">
-		<dl>
-			<dt>Updates</dt>
-			<dd class="ajax_edit_cell"><span class="data">{{user.updates}}</span>
-			</dd>
-		</dl>
-	</div>
-</fieldset>
+		<div id="login_info">
+			<dl>
+				<dt>Email</dt>
+				<dd><span class="data">{{user.email}}</span>
+				</dd>
+			</dl>
+		</div>
+		{% for u in update %}
+		<div id="update_info">
+			<dl>
+				<dt>Updates</dt>
+				<dd class="ajax_edit_cell">
+					<span class="data">{{u.title}}</span>
+				</dd>
+			</dl>
+		</div>
+		{% endfor %}
+	</fieldset>
+</div>
 
 {% endblock %}
-{% endfor %}

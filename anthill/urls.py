@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from capstone.views import home,signin,signup,signout,dashboard,create_group,group_page,add_members,add_guides,updates,add_milestone,view_milestones
+from capstone.views import home,signin,signup,signout,dashboard,create_group,group_page,add_members,add_guides,updates,add_milestone,view_milestones,profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,5 +33,7 @@ urlpatterns = [
     path('milestone/<int:mid>/',view_milestones),
     path('add_member/<int:gid>/',add_members),
     path('add_guide/<int:gid>/',add_guides),
-    # path('add_goals/<int:mid>/',add_goals),
+    path('profile/',profile),
+
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block body %}
-<div class="container">
+<div class="container" id="main">
 <div class="row align-items-start">
 	<div class="col-md-4">
 		{% for group in groups %}
@@ -25,7 +25,7 @@
 							{% csrf_token %}
 							<div class="form-group">
 								<input type="text" name="group name" placeholder=" enter your group name"><br><br>
-								<textarea type="text" cols=40 rows=3 name="description" placeholder="  description about your group"></textarea><br><br>
+								<textarea type="text" cols=30 rows=2 name="description" placeholder="  description about your group"></textarea><br><br>
 								<input type="number" id="myNumber" name="guide/s" placeholder="guides" min="1" max="5"><br><br>
 								<input type="number" id="myNumber" name="member/s" placeholder="members" min="1" max="20"><br><br>
 								<button type="submit" class="btn btn-md btn-dark">Create a Group</button>
