@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block body %}
 <div class="container" id="signup_form">
 	<div class="card-body">
@@ -10,9 +9,10 @@
 			<div class="card-body px-lg-5 pt-0">
 				<form action="/signup/" method="POST" class="text-center" style="color: #757575;">
 					{% csrf_token %}
-					<input type="text" name="username" placeholder="username"><br><br>
+					<input type="text" name="firstname" style="padding:2px;" placeholder="First Name"><input type="text" name="lastname" style="padding:2px;" placeholder="Last Name"><br><br>
+					<input type="text" name="username" placeholder="Username"><br><br>
 					<input type="email" name="email" placeholder="Email required"><br><br>
-					<input type="password" name="password" placeholder="password"><br><br>
+					<input type="password" name="password" placeholder="Password"><br><br>
 					<button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
 				</form>
 			</div>

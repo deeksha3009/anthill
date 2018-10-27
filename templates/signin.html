@@ -1,18 +1,23 @@
 {% extends "base.html" %}
 
 {% block body %}
-<div class="container" id="login_form">
+<div class="container login_form">
 	<div class="card-body">
 		<div class="card">
 			<h5 class="card-header info-color white-text text-center py-4">
 			<strong>Sign in</strong>
 			</h5>
-			<div class="card-body px-lg-5 pt-0">
+			<div class="card-body">
 				<form action="/login/" method="POST" class="text-center" style="color: #757575;">
 					{% csrf_token %}
-					<input type="text" name="username" placeholder="username">
-					<br><br>
-					<input type="password" name="password" placeholder="password">
+					<div>
+						<input type="text" name="username" placeholder="username">
+						<i style="font-size:24px" class="fa"></i>
+					</div>
+					<br>
+					<div>
+						<input type="password" name="password" placeholder="password">
+					</div>
 					<br>
 					<br>
 					<button class="btn btn-info btn-block my-4" type="submit">Sign in</button>

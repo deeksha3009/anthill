@@ -30,6 +30,8 @@ def signin(request):
 
 def signup(request):
 	if request.method == "POST":
+		firstname = request.POST.get('firstname')
+		lastname = request.POST.get('lastname')
 		username = request.POST.get('username', None)
 		password = request.POST.get('password', None)
 		email = request.POST.get("email")

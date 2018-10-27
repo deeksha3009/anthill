@@ -2,15 +2,22 @@ nav{
 	margin: 10px;
 	min-height: 40px;
 }
-#login_form{
-	border-style: solid;
-	width: 50%;
-    border-width: 5px DodgerBlue;
+body{
+	background: #43C6AC;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #191654, #43C6AC);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #191654, #43C6AC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+.login_form{
+	border-style: solid;
+	width: 60%;
+    border-width: 7px #63cdda;
+}
+
 #signup_form{
 	float:center;
-	border-style: solid;
 	width: 50%;
+	border-style: solid;
+	border-radius: 25px;
 }
 
 #list{
@@ -29,10 +36,17 @@ nav{
 	padding: 20px;
 }
 
-body{
-	background-color: #84817a;
+#details > dt{
+	text-decoration: underline;
 }
 
+
 #updation{
-	margin-left: 90px;
+	margin-left: 90px #43C6AC;
 }
+
+
+
+/*light-bg-
+
+style="background-color: #3c6382;*/

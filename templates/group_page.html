@@ -13,6 +13,7 @@
 		<div class="row align-items-start">
 			<div class="col-md-4">
 				<h1>{{group.group_name}}</h1>
+				<hr>
 				<div>
 					<h3>Members</h3>
 					{% for member in members %}
@@ -72,7 +73,7 @@
 								<h5>{{c.due_date}}</h5>
 								<p>{{c.user}}</p>
 								<p class="card-text">{{c.content|truncatechars:20}}</p>
-    							<a href="/milestone/{{c.id}}/" class="btn btn-primary">read more</a>
+    							<a href="/milestone/{{c.id}}/">read more</a>
     							<hr>
     							<h3>Goals</h3>
 								{% for goal in goals %}

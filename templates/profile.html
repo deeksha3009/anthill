@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
-<div class="profile" id="details">
+<div class="profile" id="details" style="color:white;">
 	<fieldset>
-		<h6 class="section_title">Personal information</h6>
+		<h4 class="section_title">Personal information</h4>
 		<dl id="personal_info">
 			<dt class="top">Name</dt>
 			<dd class="ajax_edit_cell">
@@ -12,7 +12,7 @@
 		</dl>
 		<div id="login_info">
 			<dl>
-				<dt>Email</dt>
+				<dt style="font-family: "Times New Roman", Times, serif;">Email</dt>
 				<dd><span class="data">{{user.email}}</span>
 				</dd>
 			</dl>
